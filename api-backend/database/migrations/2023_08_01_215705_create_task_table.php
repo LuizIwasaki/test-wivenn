@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('description', 100)->nullable(false);
-            $table->integer('assigne_id')->nullable(false);
+            $table->unsignedBigInteger('assigne_id')->nullable(false);
             $table->dateTime('dueDate')->nullable(false);
         });
 

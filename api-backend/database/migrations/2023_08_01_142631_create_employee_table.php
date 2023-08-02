@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lastName', 100)->nullable(false);
             $table->string('email', 60)->nullable(false)->unique();
             $table->string('phone', 20)->nullable(false);
-            $table->integer('department_id')->nullable(false);
+            $table->unsignedBigInteger('department_id')->nullable(false);
 
         });
 

@@ -9,3 +9,11 @@ Route::get('/', function (){
 });
 
 Route::get('/employees', [\App\Http\Controllers\EmployeeController::class, 'index']);
+Route::post('/departments', [\App\Http\Controllers\DepartmentController::class, 'store']);
+Route::get('/departments', [\App\Http\Controllers\DepartmentController::class, 'index']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/employees', [\App\Http\Controllers\EmployeeController::class, 'store']);
+    Route::get('/employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'index']);
+
+});
