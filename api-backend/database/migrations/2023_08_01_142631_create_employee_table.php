@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('employee', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->timestamps();
             $table->softDeletes();
@@ -19,20 +19,17 @@ return new class extends Migration
             $table->string('lastName', 100)->nullable(false);
             $table->string('email', 60)->nullable(false)->unique();
             $table->string('phone', 20)->nullable(false);
-            $table->integer('department_Id')->nullable(false);
+            $table->integer('department_id')->nullable(false);
 
         });
 
         Schema::table('employee', function (Blueprint $table) {
-            $table->foreign('department_Id')->references('id')->on('departments');
+            $table->foreign('department_id')->references('id')->on('department');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('employee');
     }
 };

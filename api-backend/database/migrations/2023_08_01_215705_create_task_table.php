@@ -16,20 +16,17 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('description', 100)->nullable(false);
-            $table->integer('assigne_Id')->nullable(false);
+            $table->integer('assigne_id')->nullable(false);
             $table->dateTime('dueDate')->nullable(false);
         });
 
         Schema::table('task', function (Blueprint $table) {
-            $table->foreign('assigne_Id')->references('id')->on('employees');
+            $table->foreign('assigne_id')->references('id')->on('employee');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('task');
     }
 };
