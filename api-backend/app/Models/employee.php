@@ -21,17 +21,15 @@ class employee extends Model
         'department_id',
     ];
 
-        // Relation Many-to-One with Department (Many Employees belong to One Department)
-        public function department()
-        {
-            return $this->belongsTo(Department::class);
-        }
+    // Relation Many-to-One with Department (Many Employees belong to One Department)
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 
-        // Relation One-to-Many with Task (One Employee has Many Tasks)
-        public function tasks()
-        {
-            return $this->hasMany(Task::class, 'assignee_id');
-        }
-
-
+    // Relation One-to-Many with Task (One Employee has Many Tasks)
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'assigned_id');
+    }
 }

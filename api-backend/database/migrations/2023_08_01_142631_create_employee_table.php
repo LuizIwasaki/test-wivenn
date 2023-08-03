@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->timestamps();
             $table->softDeletes();
-            $table->string('firstName', 100)->nullable(false);
-            $table->string('lastName', 100)->nullable(false);
+            $table->string('first_name', 100)->nullable(false);
+            $table->string('last_name', 100)->nullable(false);
             $table->string('email', 60)->nullable(false)->unique();
-            $table->string('phone', 20)->nullable(false);
+            $table->string('password', 100)->nullable(false);
+            $table->string('phone', 20)->nullable(true);
             $table->unsignedBigInteger('department_id')->nullable(false);
 
         });
