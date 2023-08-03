@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login']);
 Route::get('/employees', [\App\Http\Controllers\EmployeeController::class, 'index']);
-
+Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
 Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function () {
 
     /*
@@ -34,7 +34,7 @@ Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function 
     *   Task Routes
     */
     Route::post('/tasks', [\App\Http\Controllers\TaskController::class, 'store']);
-    Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
+   // Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
     Route::put('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'update']);
     Route::delete('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'destroy']);
     Route::post('/tasks/restore/{id}', [\App\Http\Controllers\TaskController::class, 'restore']);

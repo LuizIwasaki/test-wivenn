@@ -30,6 +30,6 @@ class employee extends Model
     // Relation One-to-Many with Task (One Employee has Many Tasks)
     public function tasks()
     {
-        return $this->hasMany(Task::class, 'assignee_id');
+        return $this->hasMany(Task::class, 'assigned_id');
     }
 }

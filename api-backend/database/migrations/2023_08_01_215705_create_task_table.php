@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->timestamps();
             $table->softDeletes();
-            $table->string('description', 100)->nullable(false);
-            $table->unsignedBigInteger('assigne_id')->nullable(false);
-            $table->dateTime('dueDate')->nullable(false);
+            $table->string('title', 100)->nullable(false);
+            $table->string('description', 100)->nullable(true);
+            $table->unsignedBigInteger('assigned_id')->nullable(false);
+            $table->dateTime('due_date')->nullable(true);
         });
 
         Schema::table('task', function (Blueprint $table) {
-            $table->foreign('assigne_id')->references('id')->on('employee');
+            $table->foreign('assigned_id')->references('id')->on('employee');
         });
     }
 
