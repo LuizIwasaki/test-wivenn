@@ -18,6 +18,8 @@ class DepartmentController extends Controller
 
     public function store(Request $request) {
 
+
+
         if(!Auth::user()) {
             return response()->json(['message' => 'Unauthorized!'], Response::HTTP_UNAUTHORIZED);
         }
