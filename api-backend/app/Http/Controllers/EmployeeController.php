@@ -124,4 +124,15 @@ class EmployeeController extends Controller
         return response()->json(['message' => 'Failed to restore employee!'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
+    public function searchByName($name)
+    {
+        $employees = Employee::where('first_name', 'like', '%' . $name . '%')->orWhere('last_name', 'like', '%' . $name . '%')->get(['id', 'first_name', 'last_name', 'email', 'phone', 'department_id']);
+
+        if (!$employees) {
+            return response()->json(['message' => 'Employee not found!'], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json(['employees' => $employees], Response::HTTP_OK);
+    }
+
 }
