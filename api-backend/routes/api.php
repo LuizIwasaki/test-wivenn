@@ -35,4 +35,5 @@ Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function 
     Route::put('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'update']);
     Route::delete('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'destroy']);
     Route::post('/tasks/restore/{id}', [\App\Http\Controllers\TaskController::class, 'restore']);
+    Route::get('/tasks/{title}', [\App\Http\Controllers\TaskController::class, 'searchByTitle']);
 });
