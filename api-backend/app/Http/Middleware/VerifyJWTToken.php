@@ -16,7 +16,7 @@ class VerifyJWTToken
         try {
             $user = JWTAuth::parseToken()->authenticate();
         } catch (JWTException $e) {
-            return response()->json(['error' => 'Invalid token'], Response::HTTP_UNAUTHORIZED);
+            return response()->json(['error' => 'Invalid Authentication'], Response::HTTP_UNAUTHORIZED);
         }
 
         return $next($request);
