@@ -1,15 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpFoundation\Response;
 
-Route::get('/', function () {
-    return response()->json(['message' => 'Hello World!'], Response::HTTP_OK);
-});
-Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login']);
-Route::get('/employees', [\App\Http\Controllers\EmployeeController::class, 'index']);
-Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
+/* It is not necessary to pass the 'auth:api' as a parameter
+  to the middleware group method, because I are using the JWTAuth
+  package to authenticate the user in the class VerifyJWTToken.
+*/
 Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function () {
 
     /*
@@ -25,16 +21,17 @@ Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function 
     *   Employee Routes
     */
     Route::post('/employees', [\App\Http\Controllers\EmployeeController::class, 'store']);
-    Route::get('/employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'index']);
+    Route::get('/employees', [\App\Http\Controllers\EmployeeController::class, 'index']);
     Route::put('/employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'update']);
     Route::delete('/employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'destroy']);
     Route::post('/employees/restore/{id}', [\App\Http\Controllers\EmployeeController::class, 'restore']);
     Route::get('/employees/{name}', [\App\Http\Controllers\EmployeeController::class, 'searchByName']);
+
     /*
     *   Task Routes
     */
     Route::post('/tasks', [\App\Http\Controllers\TaskController::class, 'store']);
-   // Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
+    Route::get('/tasks', [\App\Http\Controllers\TaskController::class, 'index']);
     Route::put('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'update']);
     Route::delete('/tasks/{id}', [\App\Http\Controllers\TaskController::class, 'destroy']);
     Route::post('/tasks/restore/{id}', [\App\Http\Controllers\TaskController::class, 'restore']);
