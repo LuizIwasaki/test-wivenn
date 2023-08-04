@@ -29,7 +29,6 @@ Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function 
     Route::put('/employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'update']);
     Route::delete('/employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'destroy']);
     Route::post('/employees/restore/{id}', [\App\Http\Controllers\EmployeeController::class, 'restore']);
-    Route::get('/employees/{name}', [\App\Http\Controllers\EmployeeController::class, 'searchByName']);
 
     /*
     *   Task Routes
