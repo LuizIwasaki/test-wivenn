@@ -30,6 +30,9 @@ class EmployeeController extends Controller
                 'department_id' => 'required',
             ]);
 
+            /* if the department_id does not exist in the department table,
+               the following code will return an error message and the employee cannot be created.
+            */
             $department = Department::find($request->department_id);
             if (!$department) {
                 return response()->json(['message' => 'Department not found!'], Response::HTTP_NOT_FOUND);
