@@ -5,9 +5,10 @@ interface IBackendConnectionConfig {
 }
 
 // this function is exported and exposed by preload.js inside the public folder
-declare var backendIp: (() => IBackendConnectionConfig) | undefined;
+declare var backendIp: (() => IBackendConnectionConfig);
 
 // if it doesn't exist, we are probably running in dev environment, so use localhost as default
 export const api = axios.create({
-    baseURL: (window as any).backendIp ? (backendIp as () => IBackendConnectionConfig)().backend_url : 'http://localhost:8000'
+    baseURL: 'http://localhost:8000/'
+    
 });

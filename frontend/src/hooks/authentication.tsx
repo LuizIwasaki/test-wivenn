@@ -6,7 +6,7 @@ import { getJWTBody } from "../utils/jwt_utils";
 
 interface IAuthContext {
     login(email: string, password: string): Promise<void>;
-    isAuthenticated?: ITokenAdmin;
+    user?: ITokenAdmin;
 }
 
 interface IAuthState {
@@ -58,27 +58,33 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
     };
 
     const login = useCallback(async (email: string, password: string) => {
+        console.log('pre api');
         const response = await api.post('/login', { email, password });
+        console.log('pos api');
         const { token } = response.data;
         const user = getJWTBody<ITokenAdmin>(token);
 
         localStorage.setItem(tokenName, token);
         api.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
-
+        
         setData({token: token, user: user});
     }, []);
 
+
     return (
-        <AuthContext.Provider value={{login, isAuthenticated: data.user}}>
+
+        <AuthContext.Provider value={{ login, user: data.user }}>
             {children}
         </AuthContext.Provider>
     );
 }
 
 function useAuth(): IAuthContext {
-    return useContext(AuthContext);
+    console.log('useAuth');
+
+    return  useContext(AuthContext);
 }
 
 export {
-    AuthProvider, useAuth
+    AuthProvider, useAuth, AuthContext
 }
