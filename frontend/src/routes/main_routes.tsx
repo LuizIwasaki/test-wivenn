@@ -12,8 +12,7 @@ const MainRouter: React.FC = () => {
     const { user } = useAuth();
 
     return (
-        <>
-            { !!user ? <BreadcrumbsItem to='/'><FaHome/> Home</BreadcrumbsItem> : undefined }
+        <> 
             <Routes>
                 <Route path='/' element={!!user ? <HomePage/> : <LoginPage/>}/>
                 <Route path='/login' element={<LoginPage/>}/>
