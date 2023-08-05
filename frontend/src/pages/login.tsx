@@ -34,7 +34,6 @@ const LoginPage: React.FC = () => {
                 password: Yup.string().required(),
             });
 
-            console.log('before_validate');
             await schema.validate(data, {
                 abortEarly: false,
             });
@@ -48,11 +47,9 @@ const LoginPage: React.FC = () => {
                 return;
             }
             if (error instanceof AxiosError) {
-                if (error.response?.status === 403) {
-                    presentToast({title: 'Erro',
-                     style: 'warning',
-                     description: 'email e/ou Senha incorreto(s)'});
-                }
+                presentToast({title: 'Erro',
+                 style: 'danger',
+                 description: 'Email e/ou Senha incorreto(s)'});
             }
         }
     }
@@ -65,7 +62,7 @@ const LoginPage: React.FC = () => {
                     <FormLabel>Email</FormLabel>
                     <BasicInput name="email" type="email" />
 
-                    <FormLabel style={{ marginTop: '20px' }}>Senha</FormLabel>
+                    <FormLabel>Senha</FormLabel>
                     <BasicInput name="password" type="password" placeholder='Senha' />
 
                     <Button type="submit" className="float-end" style={{ marginTop: '20px' }}>Entrar</Button>

@@ -9,6 +9,6 @@ declare var backendIp: (() => IBackendConnectionConfig);
 
 // if it doesn't exist, we are probably running in dev environment, so use localhost as default
 export const api = axios.create({
-    baseURL: 'http://localhost:8000/'
+    baseURL: 'http://localhost:8000/api/'
     
 });

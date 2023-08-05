@@ -17,7 +17,6 @@ interface IAuthState {
 const tokenName: string = 'api-token';
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
-
 const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
 
     const REFRESH_TOKEN_INTERVAL_MS = 1000 * 60;
@@ -49,7 +48,6 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
             api.defaults.headers.common = { 'Authorization': `Bearer ${newToken}` };
 
             setData({token: newToken, user: user});
-
             setTimeout(() => refreshToken(), REFRESH_TOKEN_INTERVAL_MS);
         } catch (e) {
             console.error(e);
@@ -60,7 +58,6 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
     const login = useCallback(async (email: string, password: string) => {
         console.log('pre api');
         const response = await api.post('/login', { email, password });
-        console.log('pos api');
         const { token } = response.data;
         const user = getJWTBody<ITokenAdmin>(token);
 
