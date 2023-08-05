@@ -7,10 +7,9 @@ import BasicInput from "../components/form/basic_input";
 import FlexBox from "../components/flex_box"
 import { Button, FormLabel } from "react-bootstrap";
 import * as Yup from 'yup';
-import { useToast } from "../hooks/toast";
-import { extractValidationErrors } from "../utils/validation_errors";
-
 import { AxiosError } from 'axios';
+import { extractValidationErrors } from '../utils/validation_errors';
+import {useToast} from '../hooks/toast';
 interface ILoginFormData {
     email: string;
     password: string;
@@ -22,6 +21,7 @@ const LoginPage: React.FC = () => {
 
     const {login} = useAuth();
     const navigate = useNavigate();
+    const {presentToast} = useToast();
 
     const handleLogin: SubmitHandler<ILoginFormData> = async (data) => {
 
@@ -34,7 +34,6 @@ const LoginPage: React.FC = () => {
                 password: Yup.string().required(),
             });
 
-            console.log('before_validate');
             await schema.validate(data, {
                 abortEarly: false,
             });
@@ -43,13 +42,16 @@ const LoginPage: React.FC = () => {
             navigate('/home');
 
         } catch (error) {
-            console.log('Error:', error);
             if (error instanceof Yup.ValidationError) {
-              console.log('validation_error');
-              console.log(error);
+                formRef.current?.setErrors(extractValidationErrors(error));
+                return;
             }
-          }
-
+            if (error instanceof AxiosError) {
+                presentToast({title: 'Erro',
+                 style: 'danger',
+                 description: 'Email e/ou Senha incorreto(s)'});
+            }
+        }
     }
 
     return (
@@ -60,7 +62,7 @@ const LoginPage: React.FC = () => {
                     <FormLabel>Email</FormLabel>
                     <BasicInput name="email" type="email" />
 
-                    <FormLabel style={{ marginTop: '20px' }}>Senha</FormLabel>
+                    <FormLabel>Senha</FormLabel>
                     <BasicInput name="password" type="password" placeholder='Senha' />
 
                     <Button type="submit" className="float-end" style={{ marginTop: '20px' }}>Entrar</Button>

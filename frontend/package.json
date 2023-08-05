@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@unform/web": "^2.1.6",
+    "bootstrap": "^5.3.1",
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
     "react-bootstrap": "^2.8.0",
