@@ -13,25 +13,25 @@ em seguida, será necessário adicionar atributos do banco nas seguintes variáv
 
 `DB_PASSWORD`
 #### necessário instalar o composer dentro da pasta do backend.
-```http
+```bash
   composer install
 ```
 #### comando para gerar a assinatura do JWT.
-```http
+```bash
   php artisan jwt:secret
 ```
 #### em seguida, o servidor já poderá ser iniciado, utilizando o comando
-```http
+```bash
   php artisan serve
 ```
 #### FRONTEND
 
 ####  instale todas as dependências utilizando o comando
-```http
+```bash
   npm i
 ```
 #### Inicie a aplicação utilizando o comando
-```http
+```bash
   npm run start
 ```
 ## IMPORTANTE
