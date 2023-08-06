@@ -13,9 +13,7 @@ function App() {
       <AuthProvider>
         <ToastProvider>
           <HashRouter>
-
             <MainRouter />
-
           </HashRouter>
         </ToastProvider>
       </AuthProvider>
