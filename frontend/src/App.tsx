@@ -13,6 +13,7 @@ function App() {
       <AuthProvider>
         <ToastProvider>
           <HashRouter>
+            <ProjectNavbar/>
             <MainRouter />
           </HashRouter>
         </ToastProvider>

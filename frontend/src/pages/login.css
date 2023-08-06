@@ -1,0 +1,54 @@
+.login-container {
+    background-color: gray;
+    padding: 28px;
+    border-radius: 20px;
+    font-family: Arial;
+    font-size: 20px;
+    color: white;
+    width: 23vw;
+  }
+  
+  .form-box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-field {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    color: white;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .form-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para telas menores ou iguais a 768 pixels */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 80vw;
+    }
+    .form-submit {
+      width: 100%;
+    }
+  }
+  
