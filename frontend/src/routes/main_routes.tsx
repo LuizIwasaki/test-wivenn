@@ -6,7 +6,7 @@ import EmployeeCreation from "../pages/admin/employee/create_employee";
 import LoginPage from "../pages/login";
 import ProtectedRoute from "../components/protected_routes";
 import TaskCreation from "../pages/admin/task/create_task";
-
+import EditDepartmentPage from "../pages/admin/department/edit_deparment";
 const MainRouter: React.FC = () => {
 
     const { user } = useAuth();
@@ -21,6 +21,7 @@ const MainRouter: React.FC = () => {
                 <Route path= '/admin/employee' element={<ProtectedRoute><EmployeeCreation/></ProtectedRoute>}/>
                 <Route path='/admin/task' element={<ProtectedRoute><TaskCreation/></ProtectedRoute>}/>
                 <Route path='/home' element={<ProtectedRoute><HomePage/></ProtectedRoute>}/>
+                <Route path='/admin/department/:id' element={<ProtectedRoute><EditDepartmentPage/></ProtectedRoute>}/>
  
                 
             </Routes>
