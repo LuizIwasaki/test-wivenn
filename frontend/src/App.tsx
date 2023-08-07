@@ -4,21 +4,30 @@ import { AuthProvider } from './hooks/authentication';
 import { ToastProvider } from './hooks/toast';
 import MainRouter from './routes/main_routes'
 import { HashRouter } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 function App() {
 
 
   return (
-    <div className="App d-flex flex-column" >
 
-      <AuthProvider>
-        <ToastProvider>
+    <AuthProvider>
+      <ToastProvider>
+        <div className="App d-flex flex-column" >
+
           <HashRouter>
-            <ProjectNavbar/>
-            <MainRouter />
+
+            <ProjectNavbar />
+            <div className='flex-grow-1' >
+              <Container>
+              
+                <MainRouter />
+
+              </Container>
+            </div>
           </HashRouter>
-        </ToastProvider>
-      </AuthProvider>
-    </div>
+        </div>
+      </ToastProvider>
+    </AuthProvider>
   );
 }
 

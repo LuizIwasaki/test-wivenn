@@ -1,15 +1,22 @@
-import FlexBox from "../../components/flex_box";
 import { AuthProvider } from '../../hooks/authentication';
+import { Card, Container } from 'react-bootstrap';
+
 const HomePage: React.FC = () => {
 
 
 
     return (
         <AuthProvider>
-            <FlexBox className="d-flex justify-content-center align-items-center" style={{ backgroundSize: 'cover' }}>
-                <h1>Home</h1>
+            
+            <div className="App d-flex flex-column" >
 
-            </FlexBox>
+                    <div className='flex-grow-1'>
+                        <Container className='h-100 w-100 ' >
+
+                        </Container>
+                    </div>
+
+            </div>
         </AuthProvider>
     );
 };
