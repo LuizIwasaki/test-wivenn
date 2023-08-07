@@ -6,6 +6,7 @@ Route::prefix('api')->group(function () {
 
     Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login']);
     Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'logout']);
+    Route::get('/refresh', [\App\Http\Controllers\LoginController::class, 'refreshToken']);
 
     /* It is not necessary to pass the 'auth:api' as a parameter
       to the middleware group method, because I are using the JWTAuth
@@ -13,7 +14,6 @@ Route::prefix('api')->group(function () {
     */
     Route::middleware([\App\Http\Middleware\VerifyJWTToken::class])->group(function () {
 
-        Route::get('/refresh', [\App\Http\Controllers\LoginController::class, 'refreshToken']);
         /*
         *   Department Routes
         */
