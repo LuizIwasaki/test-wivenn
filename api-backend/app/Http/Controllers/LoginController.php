@@ -21,4 +21,27 @@ class LoginController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
         ], Response::HTTP_OK);
     }
+
+
+    public function refreshToken()
+    {
+        $user = auth()->refresh();
+        return response()->json([
+            'token' => $user,
+            'type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+        ], Response::HTTP_OK);
+
+    }
+
+    public function logout() {
+
+        $user = auth()->logout();
+
+        return response()->json([
+            'message' => 'Logout successfully!'
+        ], Response::HTTP_OK);
+    }
+
+
 }
