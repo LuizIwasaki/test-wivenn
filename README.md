@@ -20,6 +20,16 @@ em seguida, será necessário adicionar atributos do banco nas seguintes variáv
 ```bash
   php artisan jwt:secret
 ```
+#### comando para gerar as migrations
+```bash
+  php artisan migration
+```
+
+#### comando para o login de autenticação
+```bash
+  php artisan db:seed
+```
+
 #### em seguida, o servidor já poderá ser iniciado, utilizando o comando
 ```bash
   php artisan serve
