@@ -19,6 +19,17 @@ class DepartmentController extends Controller
         return response()->json(['departments' => $departments], Response::HTTP_OK);
     }
 
+    public function show ($id)
+    {
+        $department = Department::find($id);
+
+        if (!$department) {
+            return response()->json(['message' => 'Department not found!'], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json(['department' => $department], Response::HTTP_OK);
+    }
+
     public function store(Request $request)
     {
         try {

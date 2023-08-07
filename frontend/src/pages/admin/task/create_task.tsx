@@ -76,19 +76,19 @@ const TaskCreation: React.FC = () => {
         }
 
     }
-        return (
+    return (
 
-            <AuthProvider>
+        <AuthProvider>
 
-                <div className="App d-flex flex-column" >
+            <div className="App d-flex flex-column" >
 
-                    <h1>Cadastro de Tarefa</h1>
+                <h1>Cadastro de Tarefa</h1>
 
-                    <div className='flex-grow-1'>
-                    </div>
+                <div className='flex-grow-1'>
                 </div>
-            </AuthProvider>
-        );
+            </div>
+        </AuthProvider>
+    );
 
 }
 export default TaskCreation;

@@ -1,7 +1,7 @@
 import { AuthProvider } from '../../../hooks/authentication';
 import { Form } from "@unform/web";
 import FlexBox from '../../../components/flex_box';
-import { FormLabel, Button } from 'react-bootstrap';
+import { FormLabel, Button, Row } from 'react-bootstrap';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import ItemFilter from "../../../components/item_filter";
+import { FaApper, FaClock, FaPen, FaRegDotCircle, FaTrash } from 'react-icons/fa';
 export interface Department {
     id: number;
     name: string;
@@ -67,7 +68,7 @@ const DepartmentCreation: React.FC = () => {
                 description: 'O departamento foi criado com sucesso!',
                 style: 'success'
             });
-            console.log('teste');
+            featchDepartments();
             navigate('/admin/department');
 
         } catch (error) {
@@ -117,15 +118,16 @@ const DepartmentCreation: React.FC = () => {
 
             <>
                 <span>{departments.length} departamentos cadastrados</span>
-                
-                <ItemFilter originalList={departments} setFilteredList={setFilteredDepartments} 
-                filterFields={['name']} placeHolder='Buscar' />
 
-                <Table striped bordered hover>
+                <ItemFilter originalList={departments} setFilteredList={setFilteredDepartments}
+                    filterFields={['name']} placeHolder='Buscar' />
+
+                <Table >
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
+                            <th scope='col'>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -134,13 +136,29 @@ const DepartmentCreation: React.FC = () => {
                                 <tr key={index}>
                                     <td>{department.id}</td>
                                     <td>{department.name}</td>
+
+                                    <td>
+                                        <div style={{ display: 'inline-flex', gap: '20px' }}>
+                                            <FaPen onClick={() => {
+                                                navigate(`/admin/department/${department.id}`);
+                                            }}>Editar</FaPen>
+
+                                            <FaTrash onClick={() => {
+                                                api.delete(`/departments/${department.id}`).then(res => {
+                                                    featchDepartments();
+                                                }).catch(error => {
+                                                    console.log(error);
+                                                });
+                                            }}>Deletar</FaTrash>
+                                        </div>
+                                    </td>
                                 </tr>
                             )
                         })}
                     </tbody>
                 </Table>
 
-            
+
             </>
         </AuthProvider>
 

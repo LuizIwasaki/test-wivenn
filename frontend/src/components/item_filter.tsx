@@ -27,10 +27,12 @@ const ItemFilter = <T extends unknown>({ originalList, setFilteredList, filterFi
     };
 
     return (
+        <div style={{float: "right", marginBottom: "10px"}}>
         <InputGroup style={style}>
             <InputGroup.Text><AiOutlineSearch/></InputGroup.Text>
             <Form.Control placeholder={placeHolder ?? 'Buscar...'} onChange={e => updateFilter(e.currentTarget.value)}/>
         </InputGroup>
+        </div>
     );
 }
 

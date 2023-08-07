@@ -19,6 +19,7 @@ Route::prefix('api')->group(function () {
         */
         Route::post('/departments', [\App\Http\Controllers\DepartmentController::class, 'store']);
         Route::get('/departments', [\App\Http\Controllers\DepartmentController::class, 'index']);
+        Route::get('/departments/{id}', [\App\Http\Controllers\DepartmentController::class, 'show']);
         Route::put('/departments/{id}', [\App\Http\Controllers\DepartmentController::class, 'update']);
         Route::delete('/departments/{id}', [\App\Http\Controllers\DepartmentController::class, 'destroy']);
         Route::post('/departments/restore/{id}', [\App\Http\Controllers\DepartmentController::class, 'restore']);

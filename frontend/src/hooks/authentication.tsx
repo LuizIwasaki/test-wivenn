@@ -66,7 +66,7 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
         api.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
 
         setData({ token: token, user: user });
-        setTimeout(() => refreshToken(), REFRESH_TOKEN_INTERVAL_MS);
+        
     }, []);
 
     const logout = useCallback(async () => {
