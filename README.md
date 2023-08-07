@@ -25,7 +25,7 @@ em seguida, será necessário adicionar atributos do banco nas seguintes variáv
   php artisan migration
 ```
 
-#### comando para o login de autenticação
+#### comando para gerar o login de autenticação
 ```bash
   php artisan db:seed
 ```
