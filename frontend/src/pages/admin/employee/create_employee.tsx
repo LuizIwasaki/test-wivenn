@@ -83,46 +83,43 @@ const EmployeeCreation: React.FC = () => {
 
     return (
         <AuthProvider>
-            <div className="App d-flex flex-column" >
-                <h1>Cadastro de Funcionário</h1>
 
-                <div className='flex-grow-1'>
-                    <Form ref={formRef} onSubmit={handleCreation} className='h-100 w-100 ' >
-                        <FlexBox>
-                            <FormLabel>Nome</FormLabel>
-                            <BasicInput name='first_name' placeholder='Nome' />
-                        </FlexBox>
+            <Form onSubmit={handleCreation} ref={formRef} className='h-100 w-100 '>
+                <h1>Cadastro de funcionário</h1>
+                <FlexBox vertical fullDimensions>
+                    <div >
+                        <div className="form-col">
+                            <FormLabel>Nome do funcionário</FormLabel>
+                            <BasicInput name="first_name" placeholder="Nome" className="form-input" />
+                        </div>
+                    
+                        <div className="form-col">
+                            <FormLabel>Sobrenome do funcionário</FormLabel>
+                            <BasicInput name="last_name" placeholder="Sobrenome" className="form-input" />
+                        </div>
 
-                        <FlexBox>
-                            <FormLabel>Sobrenome</FormLabel>
-                            <BasicInput name='last_name' placeholder='Sobrenome' />
-                        </FlexBox>
+                        <div className="form-col">
+                            <FormLabel>Email do funcionário</FormLabel>
+                            <BasicInput name="email" placeholder="Email" className="form-input" />
+                        </div>
 
-                        <FlexBox>
+                        <div className="form-col">
+                            <FormLabel>Telefone do funcionário</FormLabel>
+                            <BasicInput name="phone" placeholder="Telefone" className="form-input" type="tel" />
+                        </div>
 
-                            <FormLabel>Email</FormLabel>
-                            <BasicInput name='email' placeholder='Email' />
-                        </FlexBox>
+                        <div className="form-col">
+                            <FormLabel>Código do departamento</FormLabel>
+                            <BasicInput name="department_id" placeholder="Código do departamento" className="form-input" />
+                        </div>
 
-                        <FlexBox>
-                            <FormLabel>Telefone</FormLabel>
-                            <BasicInput name='phone' placeholder='Telefone (opcional)' />
-                        </FlexBox>
+                        <div className="form-button-container">
+                            <Button type="submit" variant="primary" className="form-button">Cadastrar</Button>
+                        </div>
+                    </div>
+                </FlexBox>
+            </Form>
 
-                        <FlexBox>
-                            <FormLabel>Departamento</FormLabel>
-                            <BasicInput name='department_id' placeholder='Código do departamento' />
-                        </FlexBox>
-
-                        <Row>
-                            <Col>
-                                <Button variant='primary' type='submit'>Criar</Button>
-                            </Col>
-                        </Row>
-
-                    </Form>
-                </div>
-            </div>
         </AuthProvider>
     );
 
