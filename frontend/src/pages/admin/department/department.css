@@ -1,0 +1,24 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-button-container {
+    display: inline-flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.form-button {
+    margin-right: 10px;
+    align-items: center;
+}

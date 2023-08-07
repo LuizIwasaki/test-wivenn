@@ -76,6 +76,7 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
 
         setData({} as IAuthState);
         
+        
     }, []);
 
     return (

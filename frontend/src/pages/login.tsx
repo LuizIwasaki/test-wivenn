@@ -71,9 +71,9 @@ const LoginPage: React.FC = () => {
             <FormLabel className="form-label">Senha</FormLabel>
             <BasicInput name="password" type="password" className="form-input" />
           </div>
-
+          <div className="form-field">
           <Button type="submit" className="form-submit">Entrar</Button>
-
+          </div>
         </Form>
       </div>
     </FlexBox>

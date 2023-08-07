@@ -1,16 +1,22 @@
 .login-container {
-    background-color: gray;
-    padding: 28px;
-    border-radius: 20px;
-    font-family: Arial;
-    font-size: 20px;
-    color: white;
-    width: 23vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    margin-left: 34%;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #283f55;
+    width: 25vw;
+    height: 35vh;
+    display: flex;
   }
   
   .form-box {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
   }
   
   .form-field {
@@ -33,8 +39,7 @@
   
   .form-submit {
     width: 100%;
-    padding: 12px;
-    background-color: #007bff;
+    background-color: #4a535c;
     color: white;
     border: none;
     border-radius: 4px;
@@ -42,13 +47,4 @@
     cursor: pointer;
   }
   
-  /* Estilos para telas menores ou iguais a 768 pixels */
-  @media (max-width: 768px) {
-    .login-container {
-      width: 80vw;
-    }
-    .form-submit {
-      width: 100%;
-    }
-  }
   

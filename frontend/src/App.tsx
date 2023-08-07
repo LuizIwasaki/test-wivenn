@@ -16,12 +16,10 @@ function App() {
 
           <HashRouter>
 
-            <ProjectNavbar />
             <div className='flex-grow-1' >
               <Container>
-              
+            <ProjectNavbar />   
                 <MainRouter />
-
               </Container>
             </div>
           </HashRouter>

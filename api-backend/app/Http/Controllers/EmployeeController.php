@@ -25,7 +25,6 @@ class EmployeeController extends Controller
                 'first_name' => 'required|max:100',
                 'last_name' => 'required|max:100',
                 'email' => 'required|unique:employee|max:100|email',
-                'password' => 'required|max:100',
                 'phone' => 'max:30',
                 'department_id' => 'required',
             ]);
@@ -83,7 +82,6 @@ class EmployeeController extends Controller
             $employee->first_name = $request->first_name;
             $employee->last_name = $request->last_name;
             $employee->email = $request->email;
-            $employee->password = bcrypt($request->password);
             $employee->phone = $request->phone ?? '';
             $employee->department_id = $request->department_id;
 
