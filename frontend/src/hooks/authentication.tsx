@@ -25,7 +25,7 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
     const [data, setData] = useState<IAuthState>(() => {
         const token = localStorage.getItem(tokenName);
 
-        setTimeout(() => refreshToken(), REFRESH_TOKEN_INTERVAL_MS);
+        //setTimeout(() => refreshToken(), REFRESH_TOKEN_INTERVAL_MS);
 
         if (token) {
             api.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
@@ -48,10 +48,11 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
             localStorage.setItem(tokenName, newToken);
             api.defaults.headers.common = { 'Authorization': `Bearer ${newToken}` };
 
-            setData({token: newToken, user: user});
+            setData({ token: newToken, user: user });
             setTimeout(() => refreshToken(), REFRESH_TOKEN_INTERVAL_MS);
         } catch (e) {
             console.error(e);
+
         }
 
     };
@@ -63,8 +64,8 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
 
         localStorage.setItem(tokenName, token);
         api.defaults.headers.common = { 'Authorization': `Bearer ${token}` };
-        
-        setData({token: token, user: user});
+
+        setData({ token: token, user: user });
         setTimeout(() => refreshToken(), REFRESH_TOKEN_INTERVAL_MS);
     }, []);
 
@@ -75,8 +76,8 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
         localStorage.removeItem(tokenName);
 
         setData({} as IAuthState);
-        
-        
+
+
     }, []);
 
     return (
@@ -89,7 +90,7 @@ const AuthProvider: React.FC<IFCChildren> = ({ children }) => {
 
 function useAuth(): IAuthContext {
 
-    return  useContext(AuthContext);
+    return useContext(AuthContext);
 }
 
 export {

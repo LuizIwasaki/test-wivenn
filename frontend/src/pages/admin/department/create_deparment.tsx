@@ -12,12 +12,41 @@ import { api } from '../../../services/axios';
 import "./department.css";
 import { extractValidationErrors } from '../../../utils/validation_errors';
 import { AxiosError } from "axios";
+import { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import ItemFilter from "../../../components/item_filter";
+export interface Department {
+    id: number;
+    name: string;
+}
+
 
 const DepartmentCreation: React.FC = () => {
 
     const formRef = useRef<FormHandles>(null);
     const navigate = useNavigate();
     const { presentToast } = useToast();
+    const [departments, setDepartments] = useState<Department[]>([]);
+    const [filteredDepartments, setFilteredDepartments] = useState<Department[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+
+    useEffect(() => {
+        featchDepartments();
+    }, []);
+
+
+    const featchDepartments = () => {
+        setLoading(true);
+        api.get('/departments').then(res => {
+            console.log(res.data.departments.length);
+            setDepartments(res.data.departments as Department[]);
+            setFilteredDepartments(res.data.departments as Department[]);
+            setLoading(false);
+        }).catch(error => {
+            setLoading(false);
+        });
+    }
 
     const handleCreation: SubmitHandler = async (data) => {
 
@@ -57,11 +86,13 @@ const DepartmentCreation: React.FC = () => {
                     presentToast({
                         title: 'Aviso!',
                         style: 'warning',
-                        description: error.response.data.error
+                        description: "Autenticação inválida, faça login novamente."
                     });
                 }
             }
         }
+
+
     }
 
 
@@ -83,6 +114,34 @@ const DepartmentCreation: React.FC = () => {
                     </div>
                 </FlexBox>
             </Form>
+
+            <>
+                <span>{departments.length} departamentos cadastrados</span>
+                
+                <ItemFilter originalList={departments} setFilteredList={setFilteredDepartments} 
+                filterFields={['name']} placeHolder='Buscar' />
+
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredDepartments.map((department, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{department.id}</td>
+                                    <td>{department.name}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
+
+            
+            </>
         </AuthProvider>
 
     )

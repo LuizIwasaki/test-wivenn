@@ -11,20 +11,20 @@ function App() {
   return (
 
     <AuthProvider>
-      <ToastProvider>
         <div className="App d-flex flex-column" >
 
           <HashRouter>
 
             <div className='flex-grow-1' >
               <Container>
+      <ToastProvider>
             <ProjectNavbar />   
                 <MainRouter />
+      </ToastProvider>
               </Container>
             </div>
           </HashRouter>
         </div>
-      </ToastProvider>
     </AuthProvider>
   );
 }
