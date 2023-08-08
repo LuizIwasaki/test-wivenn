@@ -16,6 +16,13 @@ em seguida, será necessário adicionar atributos do banco nas seguintes variáv
 ```bash
   composer install
 ```
+#### caso não funcione, certifique-se de ter o composer instalado no seu computador;
+#### se o erro persistir, entre dentro da pasta onde está localizado a pasta do php > procure o arquivo "php.ini" > editar > procure e descomente a linha onde está os comandos
+```bash
+ ;extension=mysqli  ;extension=pdo_mysql 
+```
+
+
 #### comando para gerar a assinatura do JWT.
 ```bash
   php artisan jwt:secret
