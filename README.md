@@ -50,7 +50,6 @@ em seguida, será necessário adicionar atributos do banco nas seguintes variáv
 
 #### o login padrão para acesso é este abaixo.
 
-#### o cadastro é gerado AUTOMATICAMENTE no banco.
 | Parâmetro   | Tipo       | Atributo                         |
 | :---------- | :--------- | :---------------------------------- |
 | `email` | `string` | admin@gmail.com|
